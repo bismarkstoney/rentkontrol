@@ -1,0 +1,16 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "*"
+django-environ = "==0.4.5"
+psycopg2 = "==2.8.6"
+pillow = "==8.1.0"
+django-allauth = "*"
+
+[requires]
+python_version = "3.8"
