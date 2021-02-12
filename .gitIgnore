@@ -1,3 +1,6 @@
 my_site/.env
 .vscode
 db.sqlite3
+static
+te
+media
