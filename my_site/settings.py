@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'allauth', # new
     'allauth.account', # new
     'allauth.socialaccount', # new
+    'django_filters',
+    'widget_tweaks',
 
     #local'
     'accounts',

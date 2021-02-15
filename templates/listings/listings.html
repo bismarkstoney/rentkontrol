@@ -2,17 +2,63 @@
 {% load static %}
 
 {% load humanize %}
-
+{% load widget_tweaks %}
 {% block title %} Listings{% endblock title %}
 
 {% block content %}
 
-   <section id="showcase-inner" class="py-5 text-white">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h1 class="display-4">Browse Our Properties</h1>
+  
+
+  <section id="showcase"  style="background-image: url({% static 'img/showcase.jpg' %});">
+    <div class="container text-center">
+      <div class="home-search p-5">
+        <div class="overlay p-5">
+          <h1 class="display-4 mb-4">
+          Browse Our Properties
+          </h1>
           <p class="lead">Get the lastest listings from our landloads and pay less for your dream home</p>
+          <div class="search">
+
+
+
+
+
+ <form method="get">
+    <div class="well">
+      
+      <div class="row">
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.username.label_tag }}
+          {% render_field filters.form.price class="form-control" placeholder="Price" min=0 %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.first_name.label_tag }}
+          {% render_field filters.form.bedrooms class="form-control" placeholder="Bedrooms" min=0 %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.last_name.label_tag }}
+          {% render_field filters.form.bathromms class="form-control" placeholder="Bathrooms" min=0  %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.year_joined.label_tag }}
+          {% render_field filters.form.address class="form-control" placeholder="Dansoman/Atonsu..." %}
+        </div>
+        
+      </div>
+      <button class="btn btn-info btn-block mt-4" type="submit">Search</button>
+    </div>
+  </form>
+
+
+
+          
+      
+        
+           
+             
+              
+            
+          </div>
         </div>
       </div>
     </div>
@@ -39,7 +85,7 @@
  
       <div class="row">
    {% if listings %}
-   {% for listing in  listings %}
+   {% for listing in  filters.qs %}
    <!-- Listing 1 -->
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card listing-preview">

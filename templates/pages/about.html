@@ -42,7 +42,10 @@
           {% for realtor in is_mvp %}
           
            <div class="card">
-            <img class="card-img-top" src="{{realtor.photo.url}}" alt="Seller of the month">
+           {% if realtor.photo %}
+             <img class="card-img-top" src="{{realtor.photo.url}}" alt="Seller of the month">
+           {% endif %}
+          
             <div class="card-body">
              
               <h6 class="text-secondary">{{realtor.name}}</h6>
