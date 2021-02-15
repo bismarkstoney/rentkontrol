@@ -1,10 +1,26 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView, TemplateView
 
-from django.views.generic import TemplateView
+from listings.models import Listing
+from realtors.models import Realtor
+class HomeListingView(ListView):
+    model=Listing
+    queryset=Listing.objects.all().order_by('list_date')
+    template_name='pages/index.html'
+    paginate_by=3
+    context_object_name='listings'
 
 
-def about(request):
-    return render(request, 'pages/about.html')
 
-def index(request):
-    return render(request, 'pages/index.html')
+class AboutView(ListView):
+    
+    model=Realtor
+    
+    template_name='pages/about.html'
+    context_object_name="realtors"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["is_mvp"] = Realtor.objects.filter(is_pop=True)
+        return context
+    
+

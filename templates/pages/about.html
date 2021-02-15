@@ -31,24 +31,29 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <h2>We Search For The Perfect Home</h2>
-          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
+          <h2>We Find you a dream Apartment</h2>
+          <p class="lead">For clients who wants to pay less months</p>
           <img src=" {% static 'img/about.jpg' %}" alt="">
-          <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis esse officia repudiandae ad saepe ex, amet
-            neque quod accusamus rem quia magnam magni dolorum facilis ullam minima perferendis? Exercitationem at quaerat
-            commodi id libero eveniet harum perferendis laborum molestias quia.</p>
+          <p class="mt-4">Looking for a an apartment that cost less and landlords or landladies can take their payment in less month from 3 months or less.Our goal is to help people have decent accomadation and also to help owners to live in hhamony with thier tenanats</p>
         </div>
         <div class="col-md-4">
-          <div class="card">
-            <img class="card-img-top" src="assets/img/realtors/kyle.jpg" alt="Seller of the month">
+ <h5 class="card-title">Pernalities Of The Month</h5>
+        {% if is_mvp %}
+          {% for realtor in is_mvp %}
+          
+           <div class="card">
+            <img class="card-img-top" src="{{realtor.photo.url}}" alt="Seller of the month">
             <div class="card-body">
-              <h5 class="card-title">Seller Of The Month</h5>
-              <h6 class="text-secondary">Kyle Brown</h6>
-              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nesciunt amet, illo itaque similique repellat.
-                content.
-              </p>
+             
+              <h6 class="text-secondary">{{realtor.name}}</h6>
+              
             </div>
           </div>
+          {% endfor %}
+          {% else %}
+        <div class="col-gh-12">No Personality for the month</div>
+        {% endif %}
+         
         </div>
       </div>
     </div>
@@ -56,10 +61,10 @@
 
   <!-- Work -->
   <section id="work" class="bg-dark text-white text-center">
-    <h2 class="display-4">We Work For You</h2>
-    <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem velit aperiam, unde aliquid at similique!</h4>
+    <h2 class="display-4">Join The family</h2>
+    <h4>There is a family who cares about your shelter</h4>
     <hr>
-    <a href="listings.html" class="btn btn-secondary text-white btn-lg">View Our Featured Listings</a>
+    <a href="{% url 'listings' %} " class="btn btn-secondary text-white btn-lg">View Our Featured Listings</a>
   </section>
 
   <!-- Team -->
@@ -67,40 +72,26 @@
     <div class="container">
       <h2 class="text-center">Our Team</h2>
       <div class="row text-center">
-        <div class="col-md-4">
-          <img src="assets/img/realtors/kyle.jpg" alt="" class="rounded-circle mb-3">
-          <h4>Kyle Brown</h4>
+        {% for realtor in  realtors%}
+       <div class="col-md-4">
+         
+          <img src="{{realtor.photo.url}}" alt="" class="rounded-circle mb-3" height="50%" width="50%">
+          <h4>{{realtor.name}}</h4>
           <p class="text-success">
             <i class="fas fa-award text-success mb-3"></i> Realtor</p>
           <hr>
           <p>
-            <i class="fas fa-phone"></i> (555)-555-5555</p>
+            <i class="fas fa-phone"></i> {{realtor.phone}}</p>
           <p>
-            <i class="fas fa-envelope-open"></i> kyle@btrealestate.co</p>
+            <i class="fas fa-envelope-open"></i>{{realtor.email}}</p>
+              
         </div>
+     {% endfor %}
+        
 
-        <div class="col-md-4">
-          <img src="assets/img/realtors/mark.jpg" alt="" class="rounded-circle mb-3">
-          <h4>Mark Hudson</h4>
-          <p class="text-success">Realtor</p>
-          <hr>
-          <p>
-            <i class="fas fa-phone"></i> (444)-444-4444</p>
-          <p>
-            <i class="fas fa-envelope-open"></i> mark@btrealestate.co</p>
-        </div>
+        
 
-        <div class="col-md-4">
-          <img src="assets/img/realtors/jenny.jpg" alt="" class="rounded-circle mb-3">
-          <h4>Jenny Johnson</h4>
-          <p class="text-success">Realtor</p>
-          <hr>
-          <p>
-            <i class="fas fa-phone"></i> (333)-333-3333</p>
-          <p>
-            <i class="fas fa-envelope-open"></i> jenny@btrealestate.co</p>
-        </div>
-      </div>
+        
     </div>
   </section>
 

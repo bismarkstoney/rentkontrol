@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 from datetime import datetime
 
 import uuid
@@ -42,7 +42,7 @@ class Listing(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('listing_detail', args=[str(self.slug)])   
+        return reverse('listing', args=[str(self.slug)])   
     
 
     

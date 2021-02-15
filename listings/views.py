@@ -7,7 +7,8 @@ from .models import Listing
 class ListingView(ListView):
     model=Listing
     paginate_by = 12
-    queryset=Listing.objects.all()
+    
+    queryset=Listing.objects.all().order_by('list_date')
     context_object_name='listings'
 
     template_name='listings/listings.html' 
@@ -25,8 +26,11 @@ class ListingView(ListView):
    
 
 
-class DetailListingView(TemplateView):
+class DetailListingView(DetailView):
+    model=Listing
     template_name='listings/listing.html'
+    
+    
 
 
 class SearchListing(TemplateView):
