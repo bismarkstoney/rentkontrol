@@ -40,19 +40,35 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="register.html">
+          <li 
+          
+           {% if 'account_signup' in request.path %}
+          class="nav-item active mr-3"
+          {% else %}
+          class="nav-item mr-3"
+          {% endif %}
+          
+          >
+            <a class="nav-link" href="{% url 'account_signup' %}">
              Register</a>
           </li>
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="login.html">
+          <li 
+          
+           {% if 'login' in request.path %}
+          class="nav-item active mr-3"
+          {% else %}
+          class="nav-item mr-3"
+          {% endif %}
+          
+          >
+            <a class="nav-link" href="{% url 'login' %}">
              </i>
 
               Login</a>
           </li>
           <li class="nav-item mr-3">
             <a class="btn btn-info" role='button' href="register.html">
-             Submit A Property</a>
+             Post A Property</a>
           </li>
         </ul>
       </div>

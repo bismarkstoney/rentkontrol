@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'allauth', # new
     'allauth.account', # new
     'allauth.socialaccount', # new
+    'allauth.socialaccount.providers.google',
     'django_filters',
     'widget_tweaks',
+    'crispy_forms',
 
     #local'
     'accounts',
@@ -48,7 +50,7 @@ INSTALLED_APPS = [
     'listings',
     'realtors',
 ]
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -141,11 +143,19 @@ STATIC_URL = '/static/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 MEDIA_URL='/media/'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
 
 AUTH_USER_MODEL = 'accounts.CustomUser' # new
-LOGIN_REDIRECT_URL = 'home'
-ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'index'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'index'
 SITE_ID = 1
 
 ACCOUNT_EMAIL_REQUIRED = True
