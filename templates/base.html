@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Rent Kontrol &mdash; Find Your Next Apartment</title>
+	
+    <title>Rent Kontrol {% block title %}{% endblock title %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -27,8 +28,9 @@
 	<div class="site-wrap">
   {% include 'partials/_topnav.html' %}
 	  {% include 'partials/_navbar.html' %}
-    
+   
      {% block content %} 
+     
 	   {% endblock content %}
    
 	  

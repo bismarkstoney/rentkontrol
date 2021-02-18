@@ -40,9 +40,29 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
-          <li 
+
+        {% if user.is_authenticated %}
+              <li 
           
-           {% if 'account_signup' in request.path %}
+           {% if 'dashboard' in request.path %}
+          class="nav-item active mr-3"
+          {% else %}
+          class="nav-item mr-3"
+          {% endif %}
+          
+          >
+            <a class="nav-link" href="{% url 'dashboard' %}">
+             Welcome {{user.username}} (Dashbord)</a>
+          </li>
+         
+<li class="nav-item mr-3">
+<a href=" {% url 'account_logout' %} " class="nav-link"> Log Out</a></li>
+
+  
+        {% else %}
+         <li 
+          
+           {% if 'signup' in request.path %}
           class="nav-item active mr-3"
           {% else %}
           class="nav-item mr-3"
@@ -61,7 +81,7 @@
           {% endif %}
           
           >
-            <a class="nav-link" href="{% url 'login' %}">
+            <a class="nav-link" href="{% url 'account_login' %}">
              </i>
 
               Login</a>
@@ -70,6 +90,8 @@
             <a class="btn btn-info" role='button' href="register.html">
              Post A Property</a>
           </li>
+        {% endif %}
+         
         </ul>
       </div>
     </div>
