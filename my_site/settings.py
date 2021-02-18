@@ -144,7 +144,14 @@ STATIC_URL = '/static/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 MEDIA_URL='/media/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # new
+DEFAULT_FROM_EMAIL = 'rentcontrol@gmail.com'
+EMAIL_HOST = 'smtp.sendgrid.net' # new
+EMAIL_HOST_USER = 'apikey' # new
+EMAIL_HOST_PASSWORD = '<sendgrid_password>' # new
+EMAIL_PORT = 587 # new
+EMAIL_USE_TLS = True # new
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -167,11 +174,7 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+
 
 
 

@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
+from django.core.mail import send_mail
 
 from .models import Contacts
+
 def contact(request):
     if request.method== "POST":
         listing_id= request.POST.get('listing_id', False)
@@ -22,6 +24,8 @@ def contact(request):
                 messages.error(request, 'You have already made your enquires')
         conatct=Contacts(listing=listing, listing_id=listing_id, name=name, email= email, phone=phone, message=message,user_id= user_id)
         conatct.save()
+
+        send_mail( 'Property Listing Inquiry','Ther has been an inquery on ' + listing + '.Sign into your dashboard panel for more info ', 'obengstoney@gmail.com', [realtor_email, 'obengstoney@gmail.com'], fail_silently=False)
         messages.success(request, 'Your request has been submitted, a realtor will get back to you')
         return redirect('/accounts/dashboard/' )
   
